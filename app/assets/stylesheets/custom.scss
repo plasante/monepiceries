@@ -1,6 +1,6 @@
-@import "bootstrap-sprockets";
+/*@import "bootstrap-sprockets";
 @import "bootstrap";
-
+*/
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -45,7 +45,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray-light;
+  color: #eaeaea;
 }
 
 p {
@@ -75,16 +75,16 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
+  border-top: 1px solid #999;
+  color: black;
 }
 
 footer a {
-  color: $gray;
+  color: #aaa;
 }
 
 footer a:hover {
-  color: $gray-darker;
+  color: #ddd;
 }
 
 footer small {
