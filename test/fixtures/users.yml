@@ -1,0 +1,4 @@
+pierre:
+  name: Pierre Lasante
+  email: pierre.lasante@videotron.ca
+  password_digest: <%= User.digest('password') %>

@@ -12,13 +12,14 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if (User.count < 1000)
       if (@user.save)
+        log_in @user
         flash[:success] = "Welcome to the Grocery App!"
         redirect_to @user
       else
         render 'new'
       end
     else
-      flash[:error] = "Number of users exceeded"
+      flash[:danger] = "Number of users exceeded"
       redirect_to root_path
     end
   end
