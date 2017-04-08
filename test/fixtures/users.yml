@@ -2,3 +2,8 @@ pierre:
   name: Pierre Lasante
   email: pierre.lasante@videotron.ca
   password_digest: <%= User.digest('password') %>
+  
+karo:
+  name: Carole Spenard
+  email: carole.spenard@gmail.com
+  password_digest: <%= User.digest('password') %>
