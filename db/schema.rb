@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415133427) do
+ActiveRecord::Schema.define(version: 20170416135442) do
 
   create_table "microposts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",    limit: 65535
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170415133427) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "language",          default: "fr"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

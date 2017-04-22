@@ -17,6 +17,7 @@ gem 'mini_magick',             '4.5.1'
 gem 'fog',                     '1.38.0'
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'rails-i18n'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server

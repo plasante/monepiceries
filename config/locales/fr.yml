@@ -19,13 +19,13 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  appName: "My Groceries"
-  signup: "Sign up now!"
-  homePageMessage: "This is the home page for the Groceries application."
-  home: "Home"
-  help: "Help"
-  login: "Login"
-  about: "About"
-  contact: "Contact"
-  language: "Français"
+fr:
+  appName: "Mon Épicerie"
+  signup: "Inscrivez-vous!"
+  homePageMessage: "Page d'acceuil de l'application Mon Épicerie"
+  home: "Acceuil"
+  help: "Aide"
+  login: "Connexion"
+  about: "À propos"
+  contact: "Pour nous contacter"
+  language: "English"
