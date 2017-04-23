@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  fournisseur: MyString
+  price: 1
+  format: MyString
+  description: MyString
+  diabetic: false
+  category: one
+  store: one
+
+two:
+  name: MyString
+  fournisseur: MyString
+  price: 1
+  format: MyString
+  description: MyString
+  diabetic: false
+  category: two
+  store: two
