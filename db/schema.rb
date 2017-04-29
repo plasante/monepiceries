@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423141854) do
+ActiveRecord::Schema.define(version: 20170429124422) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "street"
@@ -47,11 +47,10 @@ ActiveRecord::Schema.define(version: 20170423141854) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
+    t.string   "description"
     t.string   "fournisseur"
     t.integer  "price"
     t.string   "format"
-    t.string   "description"
     t.boolean  "diabetic"
     t.integer  "category_id"
     t.integer  "store_id"
@@ -73,6 +72,14 @@ ActiveRecord::Schema.define(version: 20170423141854) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_stores_on_address_id", using: :btree
+  end
+
+  create_table "sub_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "description"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_sub_categories_on_category_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -98,4 +105,5 @@ ActiveRecord::Schema.define(version: 20170423141854) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "stores"
   add_foreign_key "stores", "addresses"
+  add_foreign_key "sub_categories", "categories"
 end
