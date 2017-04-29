@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429124422) do
+ActiveRecord::Schema.define(version: 20170429144147) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "street"
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(version: 20170429124422) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "list_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "list_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_list_categories_on_category_id", using: :btree
+    t.index ["list_id"], name: "index_list_categories_on_list_id", using: :btree
+  end
+
+  create_table "lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lists_on_user_id", using: :btree
+  end
+
   create_table "microposts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",    limit: 65535
     t.integer  "user_id"
@@ -58,6 +74,12 @@ ActiveRecord::Schema.define(version: 20170429124422) do
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["store_id"], name: "index_products_on_store_id", using: :btree
+  end
+
+  create_table "providers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -101,6 +123,9 @@ ActiveRecord::Schema.define(version: 20170429124422) do
 
   add_foreign_key "addresses", "countries"
   add_foreign_key "addresses", "states"
+  add_foreign_key "list_categories", "categories"
+  add_foreign_key "list_categories", "lists"
+  add_foreign_key "lists", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "stores"
