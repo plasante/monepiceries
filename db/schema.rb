@@ -67,11 +67,12 @@ ActiveRecord::Schema.define(version: 20170429144147) do
     t.string   "fournisseur"
     t.integer  "price"
     t.string   "format"
+    t.integer  "unit_price",  default: 0
     t.boolean  "diabetic"
     t.integer  "category_id"
     t.integer  "store_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["store_id"], name: "index_products_on_store_id", using: :btree
   end
@@ -97,10 +98,10 @@ ActiveRecord::Schema.define(version: 20170429144147) do
   end
 
   create_table "sub_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "description"
+    t.string   "sous_category"
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["category_id"], name: "index_sub_categories_on_category_id", using: :btree
   end
 

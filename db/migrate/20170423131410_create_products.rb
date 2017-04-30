@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :fournisseur
       t.integer :price
       t.string :format
+      t.integer :unit_price, default: 0
       t.boolean :diabetic
       t.references :category, foreign_key: true
       t.references :store, foreign_key: true
