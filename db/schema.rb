@@ -36,12 +36,20 @@ ActiveRecord::Schema.define(version: 20170429144147) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "descriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "list_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "list_id"
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "description_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["category_id"], name: "index_list_categories_on_category_id", using: :btree
+    t.index ["description_id"], name: "index_list_categories_on_description_id", using: :btree
     t.index ["list_id"], name: "index_list_categories_on_list_id", using: :btree
   end
 
@@ -63,17 +71,19 @@ ActiveRecord::Schema.define(version: 20170429144147) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "description"
-    t.string   "fournisseur"
+    t.integer  "provider_id"
     t.integer  "price"
     t.string   "format"
-    t.integer  "unit_price",  default: 0
+    t.integer  "unit_price",     default: 0
     t.boolean  "diabetic"
     t.integer  "category_id"
     t.integer  "store_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "description_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["description_id"], name: "index_products_on_description_id", using: :btree
+    t.index ["provider_id"], name: "index_products_on_provider_id", using: :btree
     t.index ["store_id"], name: "index_products_on_store_id", using: :btree
   end
 
@@ -125,10 +135,13 @@ ActiveRecord::Schema.define(version: 20170429144147) do
   add_foreign_key "addresses", "countries"
   add_foreign_key "addresses", "states"
   add_foreign_key "list_categories", "categories"
+  add_foreign_key "list_categories", "descriptions"
   add_foreign_key "list_categories", "lists"
   add_foreign_key "lists", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "descriptions"
+  add_foreign_key "products", "providers"
   add_foreign_key "products", "stores"
   add_foreign_key "stores", "addresses"
   add_foreign_key "sub_categories", "categories"

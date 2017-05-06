@@ -58,6 +58,7 @@ maxi_mascouche_store  = Store.create!(name: "Maxi",
                                       address_id: maxi_mascouche_addresse.id)
 
 provider_lactantia = Provider.create!(name: "Lactancia")
+provider_quebon = Provider.create!(name: "Quebon")
 provider_country_harvest = Provider.create!(name: "Country Harvest")
 provider_maxwell_house = Provider.create!(name: "Maxwell House")
 provider_general_mills = Provider.create!(name: "General Mills")
@@ -87,133 +88,157 @@ subCategory_category_produit_cafe     = category_produit_cafe.sub_categories.cre
 subCategory_category_produit_cereale  = category_produit_cereale.sub_categories.create!(sous_category: "Céréale")
 subCategory_category_produit_viande   = category_produit_viande.sub_categories.create!(sous_category: "Boeuf haché mi-maigre")
 
-produit_lait_iga_mascouche = Product.create!(fournisseur: provider_lactantia.id,
+description_lait_1pct = Description.create!(description: "Lait 1%")
+description_lait_2pct = Description.create!(description: "Lait 2%")
+description_pain_blanc_ble_entier = Description.create!(description: "Pain blanc, blé entier")
+description_cafe_regulier = Description.create!(description: "Café régulier")
+description_cereale = Description.create!(description: "Céréale")
+description_boeuf_hache_mi_maigre = Description.create!(description: "Boeuf haché mi-maigre")
+
+#
+# IGA
+#
+# Lait 2% Lactantia
+Product.create!(provider_id: provider_lactantia.id,
                                              price: 399,
                                              format: "2000ml",
                                              unit_price: ((100 * 399) / 2000).to_i,
-                                             description: subCategory_category_produit_laitier.sous_category,
+                                             description_id: description_lait_2pct.id,
                                              diabetic: false,
-                                             category_id: category_produit_laitier.id,
+                                             category_id: category_produit_laitier.id,    
                                              store_id:    iga_mascouche_store.id)
-
-produit_lait_iga_mascouche = Product.create!(fournisseur: provider_lactantia.id,
-                                             price: 299,
+# Lait 1% Lactantia
+Product.create!(provider_id: provider_lactantia.id,
+                                             price: 399,
                                              format: "2000ml",
-                                             unit_price: ((100 * 299) / 2000).to_i,
-                                             description: subCategory_category_produit_laitier2.sous_category,
+                                             unit_price: ((100 * 399) / 2000).to_i,
+                                             description_id: description_lait_1pct.id,
                                              diabetic: false,
-                                             category_id: category_produit_laitier.id,
+                                             category_id: category_produit_laitier.id,    
+                                             store_id:    iga_mascouche_store.id)
+# Lait 2% Quebon                                             
+Product.create!(provider_id: provider_quebon.id,
+                                             price: 288,
+                                             format: "2000ml",
+                                             unit_price: ((100 * 288) / 2000).to_i,
+                                             description_id: description_lait_2pct.id,
+                                             diabetic: false,
+                                             category_id: category_produit_laitier.id,    
                                              store_id:    iga_mascouche_store.id
                                              )
-                                             
-produit_pain_iga_mascouche = Product.create!(fournisseur: provider_country_harvest.id,
+# Pain ble entier Country Harvest                                             
+Product.create!(provider_id: provider_country_harvest.id,
                                              price: 489,
                                              format: "600g",
-                                             description: subCategory_category_produit_pain.sous_category,
+                                             description_id: description_pain_blanc_ble_entier.id,
                                              diabetic: true,
                                              category_id: category_produit_pain.id,
                                              store_id:    iga_mascouche_store.id)
-
-produit_cafe_iga_mascouche = Product.create!(fournisseur: provider_maxwell_house.id,
+# Cafe regulier Maxwell House
+Product.create!(provider_id: provider_maxwell_house.id,
                                              price: 899,
                                              format: "263g",
-                                             description: subCategory_category_produit_cafe.sous_category,
+                                             description_id: description_cafe_regulier.id,
                                              diabetic: false,
                                              category_id: category_produit_cafe.id,
                                              store_id:    iga_mascouche_store.id)
-
-produit_cereale_iga_mascouche = Product.create!(fournisseur: provider_general_mills.id,
+# Cereale Cheerion
+Product.create!(provider_id: provider_general_mills.id,
                                                 price: 799,
                                                 format: "525g",
-                                                description: subCategory_category_produit_cereale.sous_category,
+                                                description_id: description_cereale.id,
                                                 diabetic: true,
                                                 category_id: category_produit_cereale.id,
                                                 store_id:    iga_mascouche_store.id)
-
-produit_viande_iga_mascouche = Product.create!(fournisseur: provider_iga.id,
+# Boeuf hache mi-maigre
+Product.create!(provider_id: provider_iga.id,
                                                price: 989,
                                                format: "1000g",
-                                               description: subCategory_category_produit_viande.sous_category,
+                                               description_id: description_boeuf_hache_mi_maigre.id,
                                                diabetic: false,
                                                category_id: category_produit_viande.id,
                                                store_id:    iga_mascouche_store.id)
-
-produit_lait_metro_mascouche = Product.create!(fournisseur: provider_lactantia.id,
+#
+# METRO
+#
+Product.create!(provider_id: provider_lactantia.id,
                                              price: 398,
                                              format: "2000ml",
-                                             description: subCategory_category_produit_laitier.sous_category,
+                                             description_id: description_lait_2pct.id,
                                              diabetic: false,
                                              category_id: category_produit_laitier.id,
                                              store_id:    metro_mascouche_store.id)
 
-produit_pain_metro_mascouche = Product.create!(fournisseur: provider_country_harvest.id,
+Product.create!(provider_id: provider_country_harvest.id,
                                              price: 488,
                                              format: "600g",
-                                             description: subCategory_category_produit_pain.sous_category,
+                                             description_id: description_pain_blanc_ble_entier.id,
                                              diabetic: true,
                                              category_id: category_produit_pain.id,
                                              store_id:    metro_mascouche_store.id)
 
-produit_cafe_metro_mascouche = Product.create!(fournisseur: provider_maxwell_house.id,
+Product.create!(provider_id: provider_maxwell_house.id,
                                              price: 898,
                                              format: "263g",
-                                             description: subCategory_category_produit_cafe.sous_category,
+                                             description_id: description_cafe_regulier.id,
                                              diabetic: false,
                                              category_id: category_produit_cafe.id,
                                              store_id:    metro_mascouche_store.id)
 
-produit_cereale_metro_mascouche = Product.create!(fournisseur: provider_general_mills.id,
+Product.create!(provider_id: provider_general_mills.id,
                                                 price: 798,
                                                 format: "525g",
-                                                description: subCategory_category_produit_cereale.sous_category,
+                                                description_id: description_cereale.id,
                                                 diabetic: true,
                                                 category_id: category_produit_cereale.id,
                                                 store_id:    metro_mascouche_store.id)
 
-produit_viande_metro_mascouche = Product.create!(fournisseur: provider_metro.id,
+Product.create!(provider_id: provider_metro.id,
                                                price: 988,
                                                format: "1000g",
-                                               description: subCategory_category_produit_viande.sous_category,
+                                               description_id: description_boeuf_hache_mi_maigre.id,
                                                diabetic: false,
                                                category_id: category_produit_viande.id,
                                                store_id:    metro_mascouche_store.id)
-
-produit_lait_maxi_mascouche = Product.create!(fournisseur: provider_lactantia.id,
+#
+# Maxi
+#
+Product.create!(provider_id: provider_lactantia.id,
                                              price: 397,
                                              format: "2000ml",
-                                             description: subCategory_category_produit_laitier.sous_category,
+                                             description_id: description_lait_2pct.id,
                                              diabetic: false,
                                              category_id: category_produit_laitier.id,
                                              store_id:    maxi_mascouche_store.id)
 
-produit_pain_maxi_mascouche = Product.create!(fournisseur: provider_country_harvest.id,
+Product.create!(provider_id: provider_country_harvest.id,
                                              price: 487,
                                              format: "600g",
-                                             description: subCategory_category_produit_pain.sous_category,
+                                             description_id: description_pain_blanc_ble_entier.id,
                                              diabetic: true,
                                              category_id: category_produit_pain.id,
                                              store_id:    maxi_mascouche_store.id)
 
-produit_cafe_maxi_mascouche = Product.create!(fournisseur: provider_maxwell_house.id,
+Product.create!(provider_id: provider_maxwell_house.id,
                                              price: 897,
                                              format: "263g",
-                                             description: subCategory_category_produit_cafe.sous_category,
+                                             description_id: description_cafe_regulier.id,
                                              diabetic: false,
                                              category_id: category_produit_cafe.id,
                                              store_id:    maxi_mascouche_store.id)
 
-produit_cereale_maxi_mascouche = Product.create!(fournisseur: provider_general_mills.id,
+Product.create!(provider_id: provider_general_mills.id,
                                                 price: 797,
                                                 format: "525g",
-                                                description: subCategory_category_produit_cereale.sous_category,
+                                                description_id: description_cereale.id,
                                                 diabetic: true,
                                                 category_id: category_produit_cereale.id,
                                                 store_id:    maxi_mascouche_store.id)
 
-produit_viande_maxi_mascouche = Product.create!(fournisseur: provider_maxi.id,
+Product.create!(provider_id: provider_maxi.id,
                                                price: 987,
                                                format: "1000g",
-                                               description: subCategory_category_produit_viande.sous_category,
+                                               description_id: description_boeuf_hache_mi_maigre.id,
                                                diabetic: false,
                                                category_id: category_produit_viande.id,
                                                store_id:    maxi_mascouche_store.id)
@@ -221,15 +246,20 @@ produit_viande_maxi_mascouche = Product.create!(fournisseur: provider_maxi.id,
 list_pierre = List.create!(user_id: user_pierre.id)
 
 list_category_lait    = ListCategory.create!( list_id:    list_pierre.id,
-                                              category_id: category_produit_laitier.id)
+                                              category_id: category_produit_laitier.id,
+                                              description_id: description_lait_2pct.id)
 list_category_pain    = ListCategory.create!( list_id:    list_pierre.id,
-                                              category_id: category_produit_pain.id)
+                                              category_id: category_produit_pain.id,
+                                              description_id: description_pain_blanc_ble_entier.id)
 list_category_cafe    = ListCategory.create!( list_id:    list_pierre.id,
-                                              category_id: category_produit_cafe.id)
+                                              category_id: category_produit_cafe.id,
+                                              description_id: description_cafe_regulier.id)
 list_category_cereale = ListCategory.create!( list_id:    list_pierre.id,
-                                              category_id: category_produit_cereale.id)
+                                              category_id: category_produit_cereale.id,
+                                              description_id: description_cereale.id)
 list_category_viande  = ListCategory.create!( list_id:    list_pierre.id,
-                                              category_id: category_produit_viande.id)
+                                              category_id: category_produit_viande.id,
+                                              description_id: description_boeuf_hache_mi_maigre.id)
 
 if Rails.env.development?
   30.times do |n|
